@@ -3,39 +3,37 @@ package consumer;
 import model.Quote;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
-import org.json.simple.JSONObject;
+
+import producer.WriteToFile;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.ObjectInputStream;
+
 
 @NoArgsConstructor
 public class Consumer {
 
-
-    public void start(File file) {
-        Quote quote = readFromFile(file);
-        writeToJson(quote, file.getName());
-    }
-
+    ReadFromFile readObjFile = new ReadObjFile();
+    WriteToFile wrireJsonFile = new WriteJsonFile();
 
     @SneakyThrows
-    private Quote readFromFile(File file){
-        FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream oos = new ObjectInputStream(fis);
-        return (Quote) oos.readObject();
+    public void consumer(){
+        File file = new File("src/main/java/objfile/");
+        while (true){
+            File[] files = file.listFiles();
+            if(files != null){
+                for (File nextFile : files){
+                    Thread thread = new Thread(() -> {
+                        Quote quote = readObjFile.readFromFile(nextFile);
+                        wrireJsonFile.writeToFile(quote);
+                        System.out.println("create: " + nextFile.getName());
+
+                    });
+                    thread.start();
+                }
+            }
+            Thread.sleep(10000);
+        }
+    }
     }
 
-    @SneakyThrows
-    private void writeToJson(Quote quote, String fileName){
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ID" , quote.getId());
-        jsonObject.put("text", quote.getText());
-        jsonObject.put("status", quote.getStatus());
-        fileName = fileName.replace(".obj","");
-        FileWriter file = new FileWriter("src/main/java/finalExam/jsonfile/" + fileName + ".json");
-        file.write(jsonObject.toJSONString());
-        file.close();
-    }
-}
+
