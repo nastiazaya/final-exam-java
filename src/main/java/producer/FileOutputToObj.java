@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
-public class WriteObjFile  implements WriteToFile{
+public class FileOutputToObj implements FileOutput {
     @SneakyThrows
     @Override
     public void writeToFile(Quote quote) {

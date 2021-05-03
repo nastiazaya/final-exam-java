@@ -3,11 +3,11 @@ package consumer;
 import lombok.SneakyThrows;
 import model.Quote;
 import org.json.simple.JSONObject;
-import producer.WriteToFile;
+import consumer.FileOutput;
 
 import java.io.FileWriter;
 
-public class WriteJsonFile implements WriteToFile {
+public class FileOutputToJson implements FileOutput {
     @SneakyThrows
     @Override
     public void writeToFile(Quote quote) {

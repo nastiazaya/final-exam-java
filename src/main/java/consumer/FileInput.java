@@ -4,6 +4,6 @@ import model.Quote;
 
 import java.io.File;
 
-public interface ReadFromFile {
+public interface FileInput {
     Quote readFromFile(File file);
 }

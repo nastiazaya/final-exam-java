@@ -1,8 +1,8 @@
-package producer;
+package consumer;
 
 import model.Quote;
 
-public interface WriteToFile {
+public interface FileOutput {
 
     void writeToFile(Quote quote);
 }

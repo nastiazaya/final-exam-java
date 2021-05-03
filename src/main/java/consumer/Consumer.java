@@ -4,7 +4,7 @@ import model.Quote;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 
-import producer.WriteToFile;
+import consumer.FileOutput;
 
 import java.io.File;
 
@@ -12,8 +12,8 @@ import java.io.File;
 @NoArgsConstructor
 public class Consumer {
 
-    ReadFromFile readObjFile = new ReadObjFile();
-    WriteToFile wrireJsonFile = new WriteJsonFile();
+    FileInput readObjFile = new FileInputFromObj();
+    FileOutput wrireJsonFile = new FileOutputToJson();
 
     @SneakyThrows
     public void consumer(){

@@ -7,7 +7,7 @@ public class Main {
 
         QuoteProducer quoteProducer = new QuoteProducer();
         Quote quote = quoteProducer.producer();
-        WriteToFile writeObjFile = new WriteObjFile();
+        FileOutput writeObjFile = new FileOutputToObj();
         writeObjFile.writeToFile(quote);
     }
 }

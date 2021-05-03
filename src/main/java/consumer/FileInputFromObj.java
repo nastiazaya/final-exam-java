@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
-public class ReadObjFile implements  ReadFromFile{
+public class FileInputFromObj implements FileInput {
     @SneakyThrows
     @Override
     public Quote readFromFile(File file) {
