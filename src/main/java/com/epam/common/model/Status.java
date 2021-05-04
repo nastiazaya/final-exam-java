@@ -1,4 +1,4 @@
-package model;
+package com.epam.common.model;
 
 import java.util.Arrays;
 
