@@ -3,13 +3,13 @@ package com.epam.consumer.services;
 
 import com.epam.infra.Singleton;
 import com.epam.common.model.Quote;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
 import java.io.File;
 
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Singleton
 public class FileConsumer implements Consumer {
 

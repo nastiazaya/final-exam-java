@@ -8,15 +8,15 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Singleton
-public class QuoteProducerImpl {
+public class QuoteProducerImpl implements QuoteProducer {
 
-    private IdGeneratorImpl idGeneratorImpl;
-    private QuoteGenerator randonQuote;
+    private final IdGenerator idGeneratorImpl;
+    private final QuoteGenerator randomQuote;
 
-
+    @Override
     public Quote producer(){
 
-        String newQuote = randonQuote.getQuoteText();
+        String newQuote = randomQuote.getQuoteText();
 
         Quote quote = Quote.builder()
                 .id(idGeneratorImpl.getNewID())

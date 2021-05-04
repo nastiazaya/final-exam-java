@@ -14,6 +14,7 @@ public class JavaConfig implements Config {
     @Getter
     private String packagesToScan;
 
+    @Singular
     private Map<Class,Class> ifc2ImplClasses;
 
     @Override
